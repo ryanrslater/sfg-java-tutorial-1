@@ -13,6 +13,8 @@ import java.util.set;
         private Long id;
         private String title;
         private String isbn;
+        @manytoMany
+        @joinTable(name = "author_book", joinColumns = @joinColumn(name = "book_id"), inverseJoinColumns = @joinColumn(name = "author_id"))
         private Set<Author> authors;
 
         public Book() {
@@ -53,6 +55,33 @@ import java.util.set;
 
         public void setAuthors(Set<Author> authors) {
             this.authors = authors;
+        }
+
+        //generate toString
+        @Override
+        public String toString() {
+            return "Book{" +
+                    "id=" + id +
+                    ", title='" + title + '\'' +
+                    ", isbn='" + isbn + '\'' +
+                    ", authors=" + authors +
+                    '}';
+        }
+
+        //generated equals and hashcode
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Book book = (Book) o;
+
+            return id != null ? id.equals(book.id) : book.id == null;
+        }
+
+        @Override
+        public int hashCode() {
+            return id != null ? id.hashCode() : 0;
         }
 
     }
