@@ -5,9 +5,12 @@ import java.util.set;
 /**
  * @author Ryan
  */
-
+@Entity
  public class Author {
  
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
  	private String firstName;
  	private String lastName;
     private Set<Book> books;
@@ -20,6 +23,15 @@ import java.util.set;
         this.lastName = lastName;
         this.books = books;
     }
+
+    public Long getId() {
+    return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
 
  	public String getFirstName() {
  		return firstName;
