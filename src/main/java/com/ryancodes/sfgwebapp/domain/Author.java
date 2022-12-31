@@ -1,6 +1,14 @@
 package com.ryancodes.sfgwebapp.domain;
 
-import java.util.set;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+
+import java.util.Set;
+import java.util.HashSet;
 
 /**
  * @author Ryan
@@ -14,7 +22,7 @@ import java.util.set;
  	private String firstName;
  	private String lastName;
     @ManyToMany(mappedBy = "authors")
-    private Set<Book> books;
+    private Set<Book> books = new HashSet<>();
 
     public Author() {
     }

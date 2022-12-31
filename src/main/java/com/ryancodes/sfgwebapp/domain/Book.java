@@ -1,21 +1,29 @@
 package com.ryancodes.sfgwebapp.domain;
 
-import java.util.set;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
+import java.util.Set;
+import java.util.HashSet;
 
 /**
  * @author Ryan
  */
-    @entity
+    @Entity
     public class Book {
 
-        @id
-        @generatedValue(strategy = GenerationType.AUTO)
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
         private Long id;
         private String title;
         private String isbn;
-        @manytoMany
-        @joinTable(name = "author_book", joinColumns = @joinColumn(name = "book_id"), inverseJoinColumns = @joinColumn(name = "author_id"))
-        private Set<Author> authors;
+        @ManyToMany
+        @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
+        private Set<Author> authors = new HashSet<>();
 
         public Book() {
         }
