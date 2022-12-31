@@ -5,18 +5,22 @@ import org.springframework.stereotype.Component;
 
 import com.ryancodes.sfgwebapp.repositories.AuthorRepository;
 import com.ryancodes.sfgwebapp.repositories.BookRepository;
+import com.ryancodes.sfgwebapp.repositories.PublisherRepository;
 import com.ryancodes.sfgwebapp.domain.Author;
 import com.ryancodes.sfgwebapp.domain.Book;
+import com.ryancodes.sfgwebapp.domain.Publisher;
 
 @Component
 public class BootstrapRunner implements CommandLineRunner {
 
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
+    private final PublisherRepository publisherRepository;
 
-    public BootstrapRunner(AuthorRepository authorRepository, BookRepository bookRepository) {
+    public BootstrapRunner(AuthorRepository authorRepository, BookRepository bookRepository, PublisherRepository publisherRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
+        this.publisherRepository = publisherRepository;
     }
 
     @Override
